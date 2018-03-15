@@ -1,0 +1,17 @@
+<h1> {{ expense.spend }} </h1>
+
+{% if error_msg  %}<p><strong> error_msg </strong>  </p> {% endif %}
+
+<form action="{% url 'expenses:save' expense.id %}" method="post">
+
+{% csrf_token %}
+
+{% for data in Expending.SPENDING_TYPE_CHOICES %}
+	<input type="radio" name="type" id="type{{ forloop.counter }}" value="{{data.0}}" />
+	<label for="type{{ forloop.counter }}">{{ data.1 }}</label><br/>
+
+{% endfor %}
+
+<input type="submit" value="spend type">
+
+</form>

@@ -1,0 +1,13 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'expenses/style.css' %}">
+{% if all_expenses %}
+	<ul>
+		{% for data in all_expenses %}
+			<li><a href="{% url 'expenses:details' data.id %}">{{ data.spend }}</a></li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<p>Nothing spend.</p>	
+
+{% endif %}
